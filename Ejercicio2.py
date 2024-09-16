@@ -13,23 +13,29 @@ class mainWindow(QMainWindow):
         
         self.setWindowTitle("Ejercicio 2")
         
+        #Inicializamos el atributo contraseña como una variable de tipo cadena vacío
         self.Contraseña=""
         
+        #Colocamos la interfaz con dos opciónes de verificar y guardar
         self.lnIngresar=QLineEdit()
         self.lnVerificar=QLineEdit()
         self.lblRespuesta=QLabel(". . .")
         btnVerificar=QPushButton("Verificar")
         btnGuardar=QPushButton("Guardar")
         
+        #Con el comando setEchoMode pasamos como parametro la QLineEdit que contendrá la contrseña que 
+        #Ingresaremos para que se mantenga oculta
         self.lnIngresar.setEchoMode(QLineEdit.Password)
         self.lnVerificar.setEchoMode(QLineEdit.Password)
         
         self.lblGuardarContraseña=QLabel("Ingrese una clave a Guardar")
         self.lblVerificarGuardado=QLabel("Verificar Contraseña Guardada")
         
+        #Conectamos los botones a las funciones correspondientes
         btnGuardar.clicked.connect(self.ClicBtnGuardar)
         btnVerificar.clicked.connect(self.ClicBtnVerificar)
         
+        #Creamos los layouts donde estará todo distribuido, utilizaremos layouts Verticales y Horizontales
         layoutIngresar=QVBoxLayout()
         layoutVerificar=QVBoxLayout()
         layoutRespuesta=QHBoxLayout()
@@ -38,6 +44,8 @@ class mainWindow(QMainWindow):
         
         layoutPrincipal=QHBoxLayout()
         
+        
+        #Añadimos los Widgets a los layouts que hemos creado
         layoutIngresar.addWidget(self.lblGuardarContraseña)
         layoutIngresar.addWidget(self.lnIngresar)
         layoutIngresar.addWidget(btnGuardar)
@@ -60,6 +68,8 @@ class mainWindow(QMainWindow):
         widget.setLayout(layoutPrincipal)
         self.setCentralWidget(widget)        
     
+    
+    #Definimos las funciones que se encargarán de guardar y verificar la cadena que hemos colocado como contraseña
     def ClicBtnGuardar(self):
         self.Contraseña= self.lnIngresar.text()
         self.lblRespuesta.setText("Contraseña Guardada!")
@@ -70,7 +80,7 @@ class mainWindow(QMainWindow):
         else:
             self.lblRespuesta.setText("Contraseña Incorrecta")
         
-                
+#Ingresamos las instrucciones para ejecutar nuestra Ventana                
 app=QApplication(sys.argv)
 Ventana=mainWindow()
 Ventana.show()
