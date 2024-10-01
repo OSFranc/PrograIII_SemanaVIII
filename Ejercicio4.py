@@ -91,7 +91,7 @@ class ventanaPrincipal(QMainWindow):
         layoutPrincipal.addLayout(layoutFormularioMascota)
         layoutPrincipal.addLayout(layoutMostrarMascotas)
         
-        #Conectamos las funciones a los botones correspondientes
+        #Conectamos las funciones al boton guardar
         btnGuardar.clicked.connect(self.ClickBtnGuardar)
         btnGuardar.clicked.connect(self.ActializarLabels)
         
@@ -117,7 +117,8 @@ class ventanaPrincipal(QMainWindow):
                 
         self.lblRespuesta.setText(f"{NuevaMascota.nombre} guardado con Exito")       
         
-        
+    #La función se activa también al presionar el botón guardar, y muestra la información guardada en la lista según su posición 
+    #en la misma, con un máximo de 3 posiciones posibles 
     def ActializarLabels(self):
         
         self.lblMascotaGuardada1Nombre.setText(listadoMascotas[0].nombre)
@@ -135,7 +136,7 @@ class ventanaPrincipal(QMainWindow):
             self.lblMascotaGuardada3Raza.setText(listadoMascotas[5].raza)
         
         
-    
+ #Ingresamos las instrucciones para ejecutar nuestra Ventana      
 app=QApplication(sys.argv)
 Ventana=ventanaPrincipal()
 Ventana.show()
